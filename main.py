@@ -11,6 +11,7 @@ Base.metadata.create_all(bind=engine)
 
 app.mount('/static',StaticFiles(directory='TodoApp/static'), name='static')
 
+
 @app.get('/')
 def test(request: Request):
     return RedirectResponse(url='/todos/todo-page', status_code=status.HTTP_302_FOUND)

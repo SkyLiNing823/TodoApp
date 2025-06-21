@@ -1,32 +1,16 @@
-from typing import Annotated
 from pydantic import BaseModel, Field
-from sqlalchemy.orm import Session
-from fastapi import APIRouter, Depends, HTTPException, Path, Request
+from fastapi import APIRouter, HTTPException, Path, Request
 from starlette import status
 from ..models import Todos
-from ..database import SessionLocal
-from .auth import get_current_user
+from ..dependencies import db_dependency, templates
+from .auth import get_current_user, user_dependency
 from starlette.responses import RedirectResponse
-from fastapi.templating import Jinja2Templates
 
-templates = Jinja2Templates(directory="TodoApp/templates")
 
 router = APIRouter(
     prefix='/todos',
     tags=['todos']
 )
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
-
-db_dependency = Annotated[Session, Depends(get_db)]
-user_dependency = Annotated[dict, Depends(get_current_user)]
 
 
 class TodoRequest(BaseModel):
@@ -58,7 +42,7 @@ async def render_todo_page(request: Request, db: db_dependency):
 
 
 @router.get('/add-todo-page')
-async def render_todo_page(request: Request, db: db_dependency):
+async def render_todo_page(request: Request):
     try:
         user = await get_current_user(request.cookies.get('access_token'))
         if user is None:
