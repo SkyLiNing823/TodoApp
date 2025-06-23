@@ -8,11 +8,13 @@
             <form id="todoForm">
                 <div class="form-group">
                     <label>Title</label>
-                    <input type="text" class="form-control" name="title" required>
+                    <input type="text" class="form-control" name="title" id="todoTitle" required>
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" rows="3" name="description" required></textarea>
+                    <textarea class="form-control" rows="3" name="description" id="todoDescription"></textarea>
+                    <input type="hidden" id="aiSuggestedDescription" value="">
+                    <small id="suggestionAlternatives" class="form-text text-muted mt-2"></small>
                 </div>
                 <div class="form-group">
                     <label>Priority</label>
