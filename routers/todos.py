@@ -15,7 +15,8 @@ router = APIRouter(
 )
 
 
-gemini_client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
+# gemini_client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
+gemini_client = genai.Client(api_key='AIzaSyA_uzk-P_uWxOem7xqIeUCbETDUuHscjyk')
 
 
 class TodoRequest(BaseModel):
