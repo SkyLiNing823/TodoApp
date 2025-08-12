@@ -1,7 +1,7 @@
 from typing import Annotated
 from sqlalchemy.orm import Session
 from fastapi import Depends
-from .database import SessionLocal 
+from TodoApp.database import SessionLocal 
 from fastapi.templating import Jinja2Templates
 
 def get_db():
