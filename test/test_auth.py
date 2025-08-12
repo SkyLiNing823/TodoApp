@@ -1,5 +1,5 @@
-from .utils import *
-from ..routers.auth import get_db, get_current_user, authenticate_user, create_access_token, SECRET_KEY, ALGORITHM
+from utils import *
+from routers.auth import get_db, get_current_user, authenticate_user, create_access_token, SECRET_KEY, ALGORITHM
 from jose import jwt
 from datetime import timedelta
 import pytest

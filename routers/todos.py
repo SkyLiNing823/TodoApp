@@ -1,9 +1,9 @@
 from pydantic import BaseModel, Field
 from fastapi import APIRouter, HTTPException, Path, Request
 from starlette import status
-from ..models import Todos
-from ..dependencies import db_dependency, templates
-from .auth import get_current_user, user_dependency
+from models import Todos
+from dependencies import db_dependency, templates
+from auth import get_current_user, user_dependency
 from starlette.responses import RedirectResponse
 from google import genai
 import os
@@ -16,7 +16,6 @@ router = APIRouter(
 
 
 gemini_client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
-
 
 
 class TodoRequest(BaseModel):
