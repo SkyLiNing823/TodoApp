@@ -3,7 +3,7 @@ from fastapi import APIRouter, HTTPException
 from starlette import status
 from models import Users
 from dependencies import db_dependency
-from auth import bcrypt_context, user_dependency
+from routers.auth import bcrypt_context, user_dependency
 
 
 router = APIRouter(prefix='/user',

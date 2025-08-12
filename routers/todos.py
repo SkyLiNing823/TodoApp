@@ -3,7 +3,7 @@ from fastapi import APIRouter, HTTPException, Path, Request
 from starlette import status
 from models import Todos
 from dependencies import db_dependency, templates
-from auth import get_current_user, user_dependency
+from routers.auth import get_current_user, user_dependency
 from starlette.responses import RedirectResponse
 from google import genai
 import os
