@@ -18,6 +18,7 @@ router = APIRouter(
 gemini_client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
 
 
+
 class TodoRequest(BaseModel):
     title: str = Field(min_length=3)
     description: str = Field(min_length=3, max_length=100)
