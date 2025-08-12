@@ -1,8 +1,9 @@
 from typing import Annotated
 from sqlalchemy.orm import Session
 from fastapi import Depends
-from database import SessionLocal 
+from database import SessionLocal
 from fastapi.templating import Jinja2Templates
+
 
 def get_db():
     db = SessionLocal()
@@ -11,6 +12,7 @@ def get_db():
     finally:
         db.close()
 
+
 db_dependency = Annotated[Session, Depends(get_db)]
 
-templates = Jinja2Templates(directory="TodoApp/templates") 
+templates = Jinja2Templates(directory="templates")
